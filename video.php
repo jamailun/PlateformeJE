@@ -36,6 +36,7 @@
 
     <link href="/css/style.css" rel="stylesheet">
     <link href="/css/animate.css" rel="stylesheet">
+    <link href="/css/video.css" rel="stylesheet">
 
     <?php
     include './GA.html';
@@ -49,6 +50,10 @@
 <script src="/js/owl.carousel.js"></script>
 <script src="/js/custom.js"></script>
 <?php
+if( ! isset($_GET['id'])) {
+    include './404.html';
+    return;
+}
 // Charger les données si on est connecté.
 session_start();
 if(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
@@ -63,70 +68,44 @@ if(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
     ?>
 </nav>
 
-<section id="themes" class="page-wrapper">
+<section id="videos" class="page-wrapper">
     <?php
-        $query = "";
-        if ( isset($_POST['theme']) ) {
-            $query = htmlspecialchars($_POST['theme']);
-        }
+        ini_set('display_errors', 1);
+        ini_set('display_startup_errors', 1);
+        error_reporting(E_ALL);
 
-        $query = "";
-        if ( isset($_POST['query']) ) {
-            $query = htmlspecialchars($_POST['query']);
-        }
+        require 'classes/Formation.php';
 
-    ini_set('display_errors', 1);
-    ini_set('display_startup_errors', 1);
-    error_reporting(E_ALL);
+        $id = $_GET['id'];
+        $formation = new Formation($id);
 
-        include 'data/formationLoader.php';
 
-        $formationPerLine = 4;
-        $lineCounter = 1;
-        $counter = 1;
-        echo "<div class=\"themeContainer\"> <div class=\"row\">";
-        foreach ($formations as $f) {
-            $owner = $f->getOwner(); //Membre.php
-            echo "<a href=\"../video.php?id=".$f->getID()."\" class=\"row formationBox\">";
-            echo "<div class=\"topFormaBox\" style=\"background-image: url('".$f->getIconLink()."');\" >".$f->getVideoName()."</div>";
-            echo "<div class=\"bottomFormaBox\">";
-            if($owner->hasIcon())
-                echo "<img src=\"../data/accounts/".$owner->getID()."/icon.png\" class=\"leftCornerFormation\" />";
-            else
-                echo "<img src=\"../img/logos/favicon.png\" class=\"leftCornerFormation\" />";
-            echo "<div class=\"rightCornerFormation\">
-                    ".$owner->getNom()."
-                </div>
-            </div>
-        </a>";
-
-            $counter ++;
-            $lineCounter ++;
-            if($lineCounter == $formationPerLine+1) {
-                echo "</div> </div>";
-                echo "<div class=\"container\"> <div class=\"row\">";
-                $lineCounter = 1;
-            }
-        }
-        echo "</div> </div>";
     ?>
-<!--
-    <div class="themeContainer">
-        <a href="" class="row formationBox">
-            <div class="topFormaBox">Vidéo</div>
-            <div class="bottomFormaBox">
-                <img src="../img/logos/account.png" class="leftCornerFormation" />
-                <div class="rightCornerFormation">
-                    Par michel
-                </div>
+    <table>
+        <td id="leftColumn">
+            <div id="videoContainer" class="boxed row-block row">
+                <video height="200" width="200" controls>
+                    <source src="<?php echo $formation->getVideoLink(); ?>" type="video/mp4" />
+                    <p>Votre navigateur ne prend pas en charge les vidéos HTML5.
+                        Voici <a href="<?php echo $formation->getVideoLink(); ?>">un lien pour télécharger la vidéo</a>.</p>
+                </video>
             </div>
-        </a>
-    </div> -->
+            <hr id="hrSplit"/>
+            <div id="descriptionContainer" class="boxed row-block row">
+                <h2>
+                    <?php echo $formation->getVideoName(); ?>
+                </h2>
+                <hr />
+                <p>
+                    <?php echo $formation->getDescription(); ?>
+                </p>
+            </div>
+        </td>
+        <td id="middleColumn"></td>
+        <td id="rightColumn" class="commentaires">Commentaires</td>
+    </table>
 
 </section>
-<?php
-include './footer.php';
-?>
 
 </body>
 </html>

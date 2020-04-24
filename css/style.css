@@ -839,7 +839,7 @@ footer a:hover {
 
 .formationBox {
     text-align: center;
-    color: white;
+    color: #ffffff;
     font-family: 'Titillium web', sans-serif;
     font-size: 1.5rem;
     font-weight: 400;
@@ -847,16 +847,27 @@ footer a:hover {
     width: 30vh;
     border-radius: 1% 1% 1% 1%;
     border-style: solid;
+    border-width: 2px;
+    border-color: black;
+}
+
+.formationBox:hover, .formationBox:focus {
+    color: #766af6;
+    font-size: 1.55rem;
+    font-weight: 600;
     border-width: 1px;
-    border-color: red;
-    background-color: #4fe2ff;
+    opacity: 90%;
+    width: 31vh;
 }
 
 .topFormaBox {
     height: 80%;
     width: 100%;
     margin: 0 auto auto auto;
-    background: blue;
+    background: blue no-repeat;
+    background-position-x: 50%;
+    background-position-y: 50%;
+    background-size: cover !important;
 }
 
 .bottomFormaBox {
@@ -869,10 +880,17 @@ footer a:hover {
     margin: auto 80% auto auto;
     height: 100%;
     width: 20%;
+    background-color: white;
+    border-width: 1px;
+    border-color: black;
+    border-radius: 10% 10% 10% 10%;
 }
 
 .rightCornerFormation {
     font-size: .7em;
+    align-content: center;
+    alignment: center;
+    align-items: center;
     vertical-align: baseline !important;
     color: #FFFFFF;
     background-color: #747373;

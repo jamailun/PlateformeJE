@@ -1,5 +1,7 @@
 <?php
 
+require 'Membre.php';
+
 class Formation {
 
     // Number of times the video has been viewed
@@ -29,13 +31,7 @@ class Formation {
     private function loadData() {
         $fileData = getcwd().'/data/formations/'.$this->id.'/data.xml';
         if ( file_exists($fileData) ) {
-            echo '-> ('.$fileData.')';
-            $xml = new SimpleXMLElement($fileData, NULL, TRUE);
-            if( ! isset($xml)) echo 'Une erreur est survenue'; else echo "Données valides.";
-            echo 'ayé';
-            echo $xml->asXML();
-            echo 'ui';
-            echo '>>>name=['.$xml->formation->name."]";
+            $xml = simplexml_load_file($fileData);
             $this->name = $xml->name;
             $this->idAccount = $xml->owner;
             $this->description = $xml->description;
@@ -45,8 +41,20 @@ class Formation {
         }
     }
 
+    public function getID() {
+        return $this->id;
+    }
+
     public function getVideoLink() {
-        return '../data/formations/'.$this->id.'/video.mp4';
+        return './data/formations/'.$this->id.'/video.mp4';
+    }
+
+    public function getIconLink() {
+        return '../data/formations/'.$this->id.'/icon.png';
+    }
+
+    public function hasIcon() {
+        return file_exists($this->getIconLink());
     }
 
     public function getViewsCount() {
@@ -63,6 +71,13 @@ class Formation {
 
     public function getDescription() {
         return $this->description;
+    }
+
+    /**
+     * @return Membre
+     */
+    public function getOwner() {
+        return new Membre($this->idAccount);
     }
 
 }

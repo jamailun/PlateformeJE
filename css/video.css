@@ -1,0 +1,64 @@
+#videos {
+    padding: 1vh 0 0 0;
+    margin: 2vh 2vw 0 2vw;
+    width: 96vw;
+    height: 88vh;
+}
+
+#rightColumn {
+    width: 18vw;
+    height: 86vh;
+    background-color: rgba(178, 184, 178, 0.72);
+}
+.commentaires {
+    color: black;
+    text-align: center;
+}
+
+#hrSplit {
+    width: 80%;
+    height: 3px;
+    background: #ffffff;
+    position: relative;
+    border: 0;
+    margin: 2vh auto -2vh auto;
+}
+
+#middleColumn {
+    width: 4vw;
+    background-color: rgba(255, 255, 255, 0);
+}
+
+#leftColumn {
+    width: 78vw;
+    background-color: rgba(165, 163, 163, 0.38);
+}
+
+#videoContainer {
+    margin-top: -3%;
+    margin-left: .4%;
+    width: 99%;
+    height: 55vh;
+    border-color: #000000;
+    border-width: 2px;
+    border-style: solid;
+    color: black;
+}
+
+video {
+    width: 100%;
+    height: 50vh;
+}
+
+#descriptionContainer {
+    margin-bottom: -3%;
+    margin-left: .4%;
+    width: 99%;
+    height: 25vh;
+    border-color: #000000;
+    border-width: 2px;
+    border-style: solid;
+    color: black;
+    border-radius: 2% 2% 2% 2%;
+}
+
