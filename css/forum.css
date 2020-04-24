@@ -1,0 +1,59 @@
+.left-block {
+    margin-left: 0;
+    margin-top: 0;
+    position: fixed;
+    width: 20vw;
+    height: 100%;
+    color: white;
+    border-style: solid;
+    border-width: 1px;
+    border-color: whitesmoke;
+    background: #1f1b49;
+    align-content: center;
+}
+
+.right-block {
+    margin-right: 0;
+    margin-left: 20vw;
+    margin-top: 0;
+    position: fixed;
+    width: 80vw;
+    height: 100%;
+    color: black;
+    align-content: center;
+}
+
+.right-block-column {
+    padding: 5px 5px 5px 5px;
+    margin: 5px 5px 5px 5px;
+    width: 50%;
+    border-color: pink;
+    border-style: solid;
+    border-width: 2px;
+    background: rgba(175, 174, 182, 0.4);
+    text-align: center;
+    vertical-align: top;
+}
+
+.left-block-title {
+    color: #0bfffa;
+}
+
+hr {
+    width: 80%;
+    height: 1px;
+    background: #4773ff;
+    position: center;
+    border: 0;
+    margin: 5px auto 5px auto;
+}
+
+.forum-page {
+    padding-bottom: 0;
+    height: 100%;
+    text-align: center;
+}
+
+div {
+    text-align: center;
+}
