@@ -75,7 +75,11 @@ if(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
             $query = htmlspecialchars($_POST['query']);
         }
 
-        include 'formationLoader.php';
+    ini_set('display_errors', 1);
+    ini_set('display_startup_errors', 1);
+    error_reporting(E_ALL);
+
+        include 'data/formationLoader.php';
 
         $formationPerLine = 4;
         $lineCounter = 1;
@@ -83,11 +87,11 @@ if(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
         echo "<div class=\"themeContainer\"> <div class=\"row\">";
         foreach ($formations as $f) {
             echo "<a href=\"\" class=\"row formationBox\">
-            <div class=\"topFormaBox\">Vidéo</div>
+            <div class=\"topFormaBox\">".$f->getVideoName()."</div>
             <div class=\"bottomFormaBox\">
                 <img src=\"../img/logos/account.png\" class=\"leftCornerFormation\" />
                 <div class=\"rightCornerFormation\">
-                    Par michel
+                    ".$f->getDescription()."
                 </div>
             </div>
         </a>";

@@ -26,7 +26,7 @@
             <li class="nav-item">
                 <label>
                     <input type="search" placeholder="Rechercher" >
-                    <button data-search="startSearch"><img src="<?php echo $img; ?>logos/search-icon.png" height="20"></button>
+                    <button data-search="startSearch"><img alt="Rechercher" src="<?php echo $img; ?>logos/search-icon.png" height="20"></button>
                 </label>
             </li>
         </ul>
@@ -69,6 +69,7 @@
 		</ul>
 	</div>
 </div>
+<!--
 <script>
     $(function() {
 
@@ -148,4 +149,4 @@
             }
         });
     });
-</script>
+</script>-->

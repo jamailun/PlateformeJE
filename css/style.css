@@ -853,29 +853,30 @@ footer a:hover {
 }
 
 .topFormaBox {
-    height: 90%;
+    height: 80%;
     width: 100%;
     margin: 0 auto auto auto;
     background: blue;
 }
 
 .bottomFormaBox {
-    height: 10%;
+    height: 20%;
     width: 100%;
     margin: auto auto 0 auto;
 }
 
 .leftCornerFormation {
-    margin: -6% 90% auto auto;
+    margin: auto 80% auto auto;
     height: 100%;
-    width: 10%;
+    width: 20%;
 }
 
 .rightCornerFormation {
     font-size: .7em;
+    vertical-align: baseline !important;
     color: #FFFFFF;
     background-color: #747373;
-    margin: -13% auto auto 10%;
+    margin: -20% 0 0 auto;
     height: 100%;
-    width: 90%;
+    width: 80%;
 }

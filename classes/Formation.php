@@ -1,13 +1,9 @@
 <?php
 
-
 class Formation {
 
-    // Link to the video
-    private $videoLink;
-
     // Number of times the video has been viewed
-    private $viewsCount;
+    private $views;
 
     // Displayed name of the video
     private $name;
@@ -18,29 +14,43 @@ class Formation {
     // Id of this formation
     private $id;
 
+    // Description
     private $description;
 
     /**
-     * Formation constructor.
-     * @param $id
-     * @param $name
-     * @param $idAccount
-     * @param $videoLink
+     * Formation's constructor.
+     * @param $id string : ID of the Formation
      */
-    public function __construct($id, $name, $idAccount, $videoLink) {
+    public function __construct($id) {
         $this->id = $id;
-        $this->idAccount = $idAccount;
-        $this->name = $name;
-        $this->videoLink = $videoLink;
-        $this->viewsCount = 0;
+        $this->loadData();
+    }
+
+    private function loadData() {
+        $fileData = getcwd().'/data/formations/'.$this->id.'/data.xml';
+        if ( file_exists($fileData) ) {
+            echo '-> ('.$fileData.')';
+            $xml = new SimpleXMLElement($fileData, NULL, TRUE);
+            if( ! isset($xml)) echo 'Une erreur est survenue'; else echo "Données valides.";
+            echo 'ayé';
+            echo $xml->asXML();
+            echo 'ui';
+            echo '>>>name=['.$xml->formation->name."]";
+            $this->name = $xml->name;
+            $this->idAccount = $xml->owner;
+            $this->description = $xml->description;
+            $this->views = $xml->views;
+        } else {
+            syslog(LOG_WARNING, 'Echec lors de l\'ouverture du fichier ('.$fileData.').');
+        }
     }
 
     public function getVideoLink() {
-        return $this->videoLink;
+        return '../data/formations/'.$this->id.'/video.mp4';
     }
 
     public function getViewsCount() {
-        return $this->viewsCount;
+        return $this->views;
     }
 
     public function getVideoName() {
@@ -52,7 +62,7 @@ class Formation {
     }
 
     public function getDescription() {
-        return "Formation de ".$this->getOwnerAccountId();
+        return $this->description;
     }
 
 }
