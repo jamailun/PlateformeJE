@@ -27,11 +27,11 @@ class Formation {
      * @param $idAccount
      * @param $videoLink
      */
-    public function __construct($id, $name/*, $idAccount, $videoLink*/) {
+    public function __construct($id, $name, $idAccount, $videoLink) {
         $this->id = $id;
-        $this->idAccount = /*$idAccount;*/ $id."_acc";
+        $this->idAccount = $idAccount;
         $this->name = $name;
-        $this->videoLink = /*$videoLink;*/ $id."_link";
+        $this->videoLink = $videoLink;
         $this->viewsCount = 0;
     }
 

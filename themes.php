@@ -58,6 +58,7 @@ if(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
 ?>
 <nav class="navbar navbar-index navbar-static-top nav-bar top-nav-collapse navbar-expand-lg">
     <?php
+    $img = '../img/';
     include './navbar.php';
     ?>
 </nav>
@@ -79,22 +80,17 @@ if(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
         $formationPerLine = 4;
         $lineCounter = 1;
         $counter = 1;
-        echo "<div class=\"container\"> <div class=\"row\">";
+        echo "<div class=\"themeContainer\"> <div class=\"row\">";
         foreach ($formations as $f) {
-            echo "
-                        <div class=\"col-sm-6 col-md-3 boxed\">
-                            <div class=\"wow fadeIn\" configuration-wow-delay=\"".(0.03*$lineCounter)."s\">
-                                <div class=\"boxed\">
-                                    <h4>".$f->getVideoName()."</h4>
-        
-                                    <div class=\"avatar\">
-                                        <i aria-hidden=\"true\" class=\"fa fa-3x fa-paper-plane\"></i>
-                                    </div>
-        
-                                    <p class=\"subtitle\">" . $f->getDescription() ."</p>
-                                </div>
-                            </div>
-                        </div>";
+            echo "<a href=\"\" class=\"row formationBox\">
+            <div class=\"topFormaBox\">Vidéo</div>
+            <div class=\"bottomFormaBox\">
+                <img src=\"../img/logos/account.png\" class=\"leftCornerFormation\" />
+                <div class=\"rightCornerFormation\">
+                    Par michel
+                </div>
+            </div>
+        </a>";
 
             $counter ++;
             $lineCounter ++;
@@ -106,7 +102,18 @@ if(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
         }
         echo "</div> </div>";
     ?>
-
+<!--
+    <div class="themeContainer">
+        <a href="" class="row formationBox">
+            <div class="topFormaBox">Vidéo</div>
+            <div class="bottomFormaBox">
+                <img src="../img/logos/account.png" class="leftCornerFormation" />
+                <div class="rightCornerFormation">
+                    Par michel
+                </div>
+            </div>
+        </a>
+    </div> -->
 
 </section>
 <?php
