@@ -72,16 +72,16 @@ if(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
 ?>
 
 	<section id="themes" class="page-wrapper">
+        <div class="themeContainer">
         <?php
             $query = "themes";
             if(isset($_GET['query']))
                 $query = htmlspecialchars($_GET['query']);
             include 'data/themeLoader.php'; //use $query value
             $lineCnt = 1;
-            echo "<div class=\"themeContainer\">";
             echo "<div class=\"row\">";
             foreach ($themeArray as $theme) {
-                echo "<a href=\"themes.php/?theme=".$theme->getName()."\" class=\"boxed themeBox\" style=\"background-image: url('".$theme->getImageLink()."');\">";
+                echo "<a href=\"themes.php?theme=".$theme->getName()."\" class=\"boxed themeBox\" style=\"background-image: url('".$theme->getImageLink()."');\">";
                 echo $theme->getName();
                 echo "</a>";
                 $lineCnt++;
@@ -91,9 +91,10 @@ if(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
                     $lineCnt = 1;
                 }
             }
-            echo "</div></div>";
+            echo "</div>";
 
         ?>
+        </div>
 	</section>
 <?php
 include './footer.php';

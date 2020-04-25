@@ -1,3 +1,5 @@
+@import url('//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css');
+
 a[href^="https://www.000webhost.com"] {
 	display: none;
 }
@@ -605,6 +607,44 @@ iframe {
     min-height: 100vh;
 }
 
+#errorMsg {
+    border-color: darkred;
+    border-style: solid;
+    border-width: 2px;
+    width: 20vw;
+    margin: auto auto auto auto;
+    color: black;
+    background-color: rgba(238, 57, 57, 0.77);
+    border-radius: 20% 20% 20% 20%;
+}
+
+.isa_info, .isa_success, .isa_warning, .isa_error {
+    margin: 10px 0;
+    padding:12px;
+}
+
+.isa_info {
+    color: #00529B;
+    background-color: #BDE5F8;
+}
+.isa_success {
+    color: #4F8A10;
+    background-color: #DFF2BF;
+}
+.isa_warning {
+    color: #9F6000;
+    background-color: #FEEFB3;
+}
+.isa_error {
+    color: #D8000C;
+    background-color: #FFD2D2;
+}
+.isa_info i, .isa_success i, .isa_warning i, .isa_error i {
+    margin:10px 22px;
+    font-size:2em;
+    vertical-align:middle;
+}
+
 #page-wrapper {
     padding-bottom: 8rem; /* Taille du footer */
 }
@@ -764,6 +804,7 @@ footer a:hover {
 */
 
 
+
 .blog-article {
     box-shadow: 0 0 20px #000000;
     padding: 15px;
@@ -849,6 +890,11 @@ footer a:hover {
     border-style: solid;
     border-width: 2px;
     border-color: black;
+    margin: auto auto auto auto;
+    background-repeat: no-repeat;
+    background-position-x: 50%;
+    background-position-y: 50%;
+    background-size: cover !important;
 }
 
 .formationBox:hover, .formationBox:focus {

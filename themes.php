@@ -36,6 +36,7 @@
 
     <link href="/css/style.css" rel="stylesheet">
     <link href="/css/animate.css" rel="stylesheet">
+    <link href="/css/hover.css" rel="stylesheet">
 
     <?php
     include './GA.html';
@@ -63,66 +64,56 @@ if(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
     ?>
 </nav>
 
-<section id="themes" class="page-wrapper">
+<section id="formations" class="page-wrapper">
+    <div class="themeContainer">
     <?php
         $query = "";
-        if ( isset($_POST['theme']) ) {
-            $query = htmlspecialchars($_POST['theme']);
+        if ( isset($_GET['theme']) ) {
+            $query = htmlspecialchars($_GET['theme']);
         }
-
-        $query = "";
-        if ( isset($_POST['query']) ) {
-            $query = htmlspecialchars($_POST['query']);
-        }
-
-    ini_set('display_errors', 1);
-    ini_set('display_startup_errors', 1);
-    error_reporting(E_ALL);
 
         include 'data/formationLoader.php';
 
-        $formationPerLine = 4;
-        $lineCounter = 1;
-        $counter = 1;
-        echo "<div class=\"themeContainer\"> <div class=\"row\">";
-        foreach ($formations as $f) {
-            $owner = $f->getOwner(); //Membre.php
-            echo "<a href=\"../video.php?id=".$f->getID()."\" class=\"row formationBox\">";
-            echo "<div class=\"topFormaBox\" style=\"background-image: url('".$f->getIconLink()."');\" >".$f->getVideoName()."</div>";
-            echo "<div class=\"bottomFormaBox\">";
-            if($owner->hasIcon())
-                echo "<img src=\"../data/accounts/".$owner->getID()."/icon.png\" class=\"leftCornerFormation\" />";
-            else
-                echo "<img src=\"../img/logos/favicon.png\" class=\"leftCornerFormation\" />";
-            echo "<div class=\"rightCornerFormation\">
-                    ".$owner->getNom()."
+        if( sizeof($formations) == 0 ) {
+            //Si jamais aucune formation n'a été trouvée avec la query
+            echo "<div class=\"isa_error\"><i class=\"fa fa-times-circle\"></i>Aucune vidéo n'a été trouvée.</div>";
+            echo " <button onclick=\"goBack()\" class='boxed-grey hvr-bounce-in hvr-overline-from-center' style='color: black; background-color: rgba(41,130,25,0.82); border-radius: 10% 10% 10% 10%;position: absolute;top: 20%;left: 47%;'>Retour</button>
+                    <script>
+                    function goBack() {
+                      window.history.back();
+                    }
+                    </script> ";
+        } else {
+            //Si on a des vidéos.
+            $formationPerLine = 4;
+            $lineCounter = 1;
+            echo " <div class=\"row\">";
+            foreach ($formations as $f) {
+                $owner = $f->getOwner(); //Membre
+                echo "<a href=\"../video.php?id=".$f->getID()."\" class=\"row formationBox\">";
+                echo "<div class=\"topFormaBox\" style=\"background-image: url('".$f->getIconLink()."');\" >".$f->getVideoName()."</div>";
+                echo "<div class=\"bottomFormaBox\">";
+                if($owner->hasIcon())
+                    echo "<img src=\"../data/accounts/".$owner->getID()."/icon.png\" class=\"leftCornerFormation\" />";
+                else
+                    echo "<img src=\"../img/logos/favicon.png\" class=\"leftCornerFormation\" />";
+                echo "<div class=\"rightCornerFormation\">
+                        ".$owner->getNom()."
+                    </div>
                 </div>
-            </div>
-        </a>";
+            </a>";
 
-            $counter ++;
-            $lineCounter ++;
-            if($lineCounter == $formationPerLine+1) {
-                echo "</div> </div>";
-                echo "<div class=\"container\"> <div class=\"row\">";
-                $lineCounter = 1;
+                $lineCounter ++;
+                if($lineCounter == $formationPerLine+1) {
+                    echo "</div>";
+                    echo "<div class=\"row\" style=\"margin-top: 3vh;\">";
+                    $lineCounter = 1;
+                }
             }
+            echo "</div>";
         }
-        echo "</div> </div>";
     ?>
-<!--
-    <div class="themeContainer">
-        <a href="" class="row formationBox">
-            <div class="topFormaBox">Vidéo</div>
-            <div class="bottomFormaBox">
-                <img src="../img/logos/account.png" class="leftCornerFormation" />
-                <div class="rightCornerFormation">
-                    Par michel
-                </div>
-            </div>
-        </a>
-    </div> -->
-
+    </div>
 </section>
 <?php
 include './footer.php';

@@ -20,23 +20,21 @@
     width: 80vw;
     height: 100%;
     color: black;
+    background-color: whitesmoke;
     align-content: center;
 }
 
 .right-block-column {
-    padding: 5px 5px 5px 5px;
+    padding: 15px 15px 15px 15px;
     margin: 5px 5px 5px 5px;
     width: 50%;
-    border-color: pink;
-    border-style: solid;
-    border-width: 2px;
     background: rgba(175, 174, 182, 0.4);
     text-align: center;
     vertical-align: top;
 }
 
 .left-block-title {
-    color: #0bfffa;
+    color: #ccccee;
 }
 
 hr {

@@ -43,11 +43,11 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
     <div class="left-block">
         <h3 class="left-block-title">Liste des topics</h3>
         <hr />
-        <div>Topic 1</div>
+        <div><a href=""> Topic 1 </a></div>
         <hr />
-        <div>Topic 2</div>
+        <div><a href=""> Topic 2 </a></div>
         <hr />
-        <div>Topic 3</div>
+        <div><a href=""> Topic 3 </a></div>
         <hr />
     </div>
     <table class="right-block">
