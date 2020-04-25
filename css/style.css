@@ -624,6 +624,8 @@ iframe {
 }
 
 .isa_info {
+    margin-top: -30px;
+    text-align: center;
     color: #00529B;
     background-color: #BDE5F8;
 }

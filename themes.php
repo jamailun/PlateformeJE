@@ -68,8 +68,12 @@ if(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
     <div class="themeContainer">
     <?php
         $query = "";
-        if ( isset($_GET['theme']) ) {
+        $queryType = "query";
+        if( isset( $_GET['query'] )) {
+            $query = htmlspecialchars($_GET['query']);
+        } else {
             $query = htmlspecialchars($_GET['theme']);
+            $queryType = "theme";
         }
 
         include 'data/formationLoader.php';
@@ -85,6 +89,12 @@ if(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
                     </script> ";
         } else {
             //Si on a des vidéos.
+            echo "<div class='isa_info'>Recherche ";
+            if($queryType == "query")
+                echo "par ".$query.".";
+            else
+                echo "dans le thème : [".$query."].";
+            echo "</div>";
             $formationPerLine = 4;
             $lineCounter = 1;
             echo " <div class=\"row\">";
