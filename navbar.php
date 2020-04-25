@@ -12,9 +12,9 @@
                 </a>
                 <div class="dropdown-menu">
                     <?php if("$_SERVER[REQUEST_URI]" != "/"){$path = "/";}else{$path = "";} ?>
-                    <a class="dropdown-item" href="<?php echo $path; ?>?query=themes">Formations par thème</a>
-                    <a class="dropdown-item" href="<?php echo $path; ?>?query=date">Formations les plus récentes</a>
-                    <a class="dropdown-item" href="<?php echo $path; ?>?query=views">Formations les plus vues</a>
+                    <a class="dropdown-item" href="<?php echo $path; ?>index.php">Formations par thème</a>
+                    <a class="dropdown-item" href="<?php echo $path; ?>themes.php?query=date">Formations les plus récentes</a>
+                    <a class="dropdown-item" href="<?php echo $path; ?>themes.php?query=date">Formations les plus vues</a>
                 </div>
             </li>
             <li class="nav-item"><a class="nav-link" href="/forum/">Forum</a></li>
